@@ -2,12 +2,12 @@ const Catalogue = require("../src/productCatalogue");
 const Product = require("../src/product");
 // Setup
 let cat = new Catalogue("Test Catalogue");
-const p123 = new Product("A123", "Product 1", 100, 9, 10.0);
+const p123 = new Product("A123", "Product 1", 100, 100, 10.0);
 const p124 = new Product("A124", "Widget 1", 100, 10, 8.0);
-const p125 = new Product("A125", "A Product 2", 100, 7, 10.0);
-const p126 = new Product("A126", "A Widget 2", 100, 10, 10.0);
-const p127 = new Product("A127", "Bracket 1", 100, 5, 10.0)
-const p128 = new Product("A128", "Another Product 3", 100, 11, 10.0);
+const p125 = new Product("A125", "A Product 2", 100, 30, 10.0);
+const p126 = new Product("A126", "A Widget 2", 100, 200, 10.0);
+const p127 = new Product("A127", "Bracket 1", 100, 100, 10.0)
+const p128 = new Product("A128", "Another Product 3", 100, 80, 10.0);
 let response
 
 console.log('Test addProduct')
@@ -68,7 +68,7 @@ else
   console.log('\tFailed')
 
 // ================================
-cat = new Catalogue("Test Catalogue")
+cat = new Catalogue("Test removeProductById")
 console.log('Test removeProductById')
 
 cat.addProduct(p123);
@@ -99,7 +99,7 @@ else
 // ================================
 console.log('Test checkReorder')
 
-cat = new Catalogue("Test Catalogue")
+cat = new Catalogue("Test checkReorder")
 cat.addProduct(p123);
 cat.addProduct(p124);
 cat.addProduct(p125);
@@ -108,16 +108,18 @@ cat.addProduct(p127);
 cat.addProduct(p128);
 
 console.log("\tWhen the quantityInStock is less than or equal to their reorder level, then it returns an object structure")
-let products = cat.checkReorder(newQuality)
+let products = cat.checkReorder()
+console.log(products)
 // Exepectation
-if (products.type == 'Reorder' && products.productIds.length === 4)
+if (products.type == 'Reorder' && products.productIds.length === 3)
     console.log('\tPassed')
 else
     console.log('\tFailed')
 
 console.log("\tWhen nothing needs reordering, then the array will be empty")
-cat = new Catalogue("Test Catalogue")
-products = cat.checkReorder(subId)
+cat = new Catalogue("Test checkReorder")
+products = cat.checkReorder()
+console.log(products)
 // Exepectation
 if (products.type == 'Reorder' && products.productIds.length === 0)
     console.log('\tPassed')
