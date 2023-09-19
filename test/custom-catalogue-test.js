@@ -66,3 +66,33 @@ if (matches.length === 0)
   console.log('\tPassed')
 else
   console.log('\tFailed')
+
+// ================================
+cat = new Catalogue("Test Catalogue")
+console.log('Test removeProductById')
+
+cat.addProduct(p123);
+cat.addProduct(p124);
+cat.addProduct(p125);
+cat.addProduct(p126);
+cat.addProduct(p127);
+cat.addProduct(p128);
+
+let subId = 'A123'
+console.log("\tGiven the catalogue has some products, when we enter the id has matches, then it returns the true")
+let result = cat.removeProductById(subId)
+// Exepectation
+if (result == true)
+    console.log('\tPassed')
+else
+    console.log('\tFailed')
+
+subId = 'a123'
+console.log("\tGiven the catalogue has some products, when we enter the id has no matches, then it returns the false")
+result = cat.removeProductById(subId)
+// Exepectation
+if (result == false)
+    console.log('\tPassed')
+else
+    console.log('\tFailed')
+
